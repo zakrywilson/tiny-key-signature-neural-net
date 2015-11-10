@@ -48,11 +48,23 @@ for iter in xrange(5000):
   # update weights
   synapse += np.dot(layer_one.T, layer_two_delta)
 
+# dictionary for displaying note names and future developements
+notes = {'0.05': 'C ', '0.10': 'C#', '0.15': 'D ', '0.20': 'D#',
+         '0.25': 'E ', '0.30': 'F ', '0.35': 'F#', '0.40': 'G ',
+         '0.45': 'G#', '0.50': 'A ', '0.55': 'A#', '0.60': 'B '}
+
 # display results
-print "--------        -------"
-print "expected        network"
-print "--------        -------"
-for x, y in zip(o.tolist(), layer_two.tolist()):
-  for expected, answer in zip(x, y):
-    answer = round(answer, 2)
-    print " ", format(expected, '.2f') ,"   -->   ", format(answer, '.2f')
+print "   --------        -------"
+print "   expected        network"
+print "   --------        -------"
+for expected, answer in zip(o.tolist(), layer_two.tolist()):
+  for exp, ans in zip(expected, answer):
+    # round the net's answer to the nearest 100th
+    ans = round(ans, 2)
+    # was the network correct?
+    right_or_wrong = "correct" if ans == exp else "incorrect"
+    # format it all pretty
+    print notes.get(format(exp, '.2f')), " " ,  \
+          format(exp, '.2f'), "   -->   ",     \
+          format(ans, '.2f'), "   ", right_or_wrong
+
