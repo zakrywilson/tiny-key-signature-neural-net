@@ -33,7 +33,7 @@ np.random.seed(1)
 # initialize weights randomly with mean 0
 synapse = 2 * np.random.random((12, 1)) - 1
 
-for iter in xrange(20000):
+for iter in xrange(5000):
 
   # forward propagation
   layer_one = i
