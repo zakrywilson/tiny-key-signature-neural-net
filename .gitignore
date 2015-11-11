@@ -1,2 +1,2 @@
 # things to ignore:
-*pyc
+*.pyc
